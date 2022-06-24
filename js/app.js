@@ -71,5 +71,12 @@ $(document).ready(function() {
                 });
             }
         }
+
+        if(input_value==="+-"){
+            $(".input-screen").val(function(){
+                temp_entry = -temp_entry;
+                return temp_entry;
+            });
+        }
     });
 });
