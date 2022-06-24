@@ -22,7 +22,8 @@ $(document).ready(function() {
 
         if(input_value==="."){
             $(".input-screen").val(function(){
-                if(this.value.slice(-1)==="." && input_value==="."){
+                var regExp = /\./i;
+                if(regExp.test(this.value) && input_value==="."){
                     temp_entry = this.value;
                 }
                 else{
