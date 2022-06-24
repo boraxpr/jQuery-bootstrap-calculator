@@ -46,20 +46,26 @@ $(document).ready(function() {
                 $(".input-screen").val(function(){
                     switch(operation){
                         case "+":
-                            return parseFloat(operandA)+parseFloat(operandB);
+                            temp_entry = parseFloat(operandA)+parseFloat(operandB);
+                            return temp_entry;
                             break; 
                         case "-":
-                            return parseFloat(operandA)-parseFloat(operandB);
+                            temp_entry = parseFloat(operandA)-parseFloat(operandB);
+                            return temp_entry;
                             break;
                         case "x":
-                            return parseFloat(operandA)*parseFloat(operandB);
+                            temp_entry = parseFloat(operandA)*parseFloat(operandB);
+                            return temp_entry;
                             break;
                         case "/":
-                            var raw = parseFloat(operandA)/parseFloat(operandB);     
-                            return raw.toFixed(3);
+                            var raw = parseFloat(operandA)/parseFloat(operandB);  
+                            raw = raw.toFixed(3);   
+                            temp_entry = raw;
+                            return temp_entry;
                             break;
                         case "%":
-                            return parseFloat(operandA) % parseFloat(operandB);
+                            temp_entry = parseFloat(operandA) % parseFloat(operandB);
+                            return temp_entry;
                             break;
                     }
                 });
