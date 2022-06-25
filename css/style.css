@@ -1,3 +1,5 @@
+@import url('http://fonts.cdnfonts.com/css/common-pixel');
+
 .input-screen
 { 
     /* later */
@@ -11,6 +13,16 @@
     background-color: #dfdddd;
 }
 
+.history-screen
+{
+    margin-top: 5%;
+    background-color: #c7c7c7;
+}
+
+.logo
+{
+    font-family: 'Common Pixel', sans-serif;
+}
 .row 
 {
     margin: 10px;

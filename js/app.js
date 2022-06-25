@@ -3,7 +3,7 @@ $(document).ready(function() {
     var operandB = 0;
     var operation = null;
     var temp_entry = 0;
-
+    var history = null;
     $("button").click(function()
     {
         var input_value = this.value;
@@ -43,7 +43,8 @@ $(document).ready(function() {
         if(input_value==="="){
             if(operandA!=="0" && operation!==null){
                 operandB = temp_entry;
-
+                history = operandA+" "+operation+" "+operandB;
+                $(".history-screen").val(history);
                 $(".input-screen").val(function(){
                     switch(operation){
                         case "+":
