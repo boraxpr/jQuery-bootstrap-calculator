@@ -1,4 +1,6 @@
 # jQuery-bootstrap-calculator<br>
+jQuery 3.6.0, Bootstrap 5.2.0, CSS btn transition background-position
+![Alt Text](https://i.imgur.com/OLUa0z1.png)
 ## Functionalities
 ### 1.RESET 
 ![Alt Text](https://i.imgur.com/6z0Y4ei.gif)
