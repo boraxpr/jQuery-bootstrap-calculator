@@ -52,7 +52,7 @@ $(document).ready(function() {
                             return temp_entry;
                             break; 
                         case "-":
-                            temp_entry = parseFloat(operandA)-parseFloat(operandB);
+                            temp_entry = parseFloat(operandB)-parseFloat(operandA);
                             return temp_entry;
                             break;
                         case "x":
