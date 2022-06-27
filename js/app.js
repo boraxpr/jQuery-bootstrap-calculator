@@ -11,7 +11,7 @@ $(function () {
             $(".input-screen").val("");
         }
 
-        if ($.isNumeric(input_value)) {
+        if (/\d/.test(input_value)) {
 
             $(".input-screen").val(function () {
                 temp_entry = this.value + input_value;
@@ -21,8 +21,8 @@ $(function () {
 
         if (input_value === ".") {
             $(".input-screen").val(function () {
-                var regExp = /\./i;
-                if (regExp.test(this.value) && input_value === ".") {
+
+                if (/\./.test(this.value) && input_value === ".") {
                     temp_entry = this.value;
                 }
                 else {
@@ -42,7 +42,7 @@ $(function () {
         if (input_value === "=") {
             if (operandA !== "0" && operation !== null) {
                 operandB = temp_entry;
-                history = operandA + " " + operation + " " + operandB;
+                history = operandB + " " + operation + " " + operandA;
                 $(".history-screen").val(history);
                 $(".input-screen").val(function () {
                     switch (operation) {
