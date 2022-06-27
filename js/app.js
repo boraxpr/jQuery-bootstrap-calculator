@@ -1,18 +1,30 @@
 $(function () {
-    var operandA = 0;
-    var operandB = 0;
+    var operandA = null;
+    var operandB = null;
     var operation = null;
     var temp_entry = 0;
+    var continuous = 0;
     var history = null;
     $("button").on("click", function () {
         var input_value = this.value;
 
         if (input_value === "reset") {
-            $(".input-screen").val("");
+            operandA = null;
+            operandB = null;
+            operation = null;
+            temp_entry = 0;
+            cont_entry = 0;
+            continuous = 0;
+            history = null;
+            $(".input-screen").val("READY");
+            $(".history-screen").val("RESET");
         }
 
         if (/\d/.test(input_value)) {
-
+            let input_screen_val = $(".input-screen").val();
+            if (input_screen_val === "READY") {
+                $(".input-screen").val("");
+            }
             $(".input-screen").val(function () {
                 temp_entry = this.value + input_value;
                 return temp_entry;
@@ -40,37 +52,43 @@ $(function () {
         }
 
         if (input_value === "=") {
-            if (operandA !== "0" && operation !== null) {
+            if (operandB === null && continuous === 0) {
                 operandB = temp_entry;
-                history = operandB + " " + operation + " " + operandA;
-                $(".history-screen").val(history);
-                $(".input-screen").val(function () {
-                    switch (operation) {
-                        case "+":
-                            temp_entry = parseFloat(operandA) + parseFloat(operandB);
-                            return temp_entry;
-                            break;
-                        case "-":
-                            temp_entry = parseFloat(operandB) - parseFloat(operandA);
-                            return temp_entry;
-                            break;
-                        case "x":
-                            temp_entry = parseFloat(operandA) * parseFloat(operandB);
-                            return temp_entry;
-                            break;
-                        case "/":
-                            var raw = parseFloat(operandA) / parseFloat(operandB);
-                            raw = raw.toFixed(3);
-                            temp_entry = raw;
-                            return temp_entry;
-                            break;
-                        case "%":
-                            temp_entry = parseFloat(operandA) % parseFloat(operandB);
-                            return temp_entry;
-                            break;
-                    }
-                });
+                continuous = 1;
             }
+            else {
+                operandA = temp_entry;
+            }
+
+            history = operandA + " " + operation + " " + operandB;
+            $(".history-screen").val(history);
+            $(".input-screen").val(function () {
+                switch (operation) {
+                    case "+":
+                        temp_entry = parseFloat(operandA) + parseFloat(operandB);
+                        return temp_entry;
+                        break;
+                    case "-":
+                        temp_entry = parseFloat(operandA) - parseFloat(operandB);
+                        return temp_entry;
+                        break;
+                    case "x":
+                        temp_entry = parseFloat(operandA) * parseFloat(operandB);
+                        return temp_entry;
+                        break;
+                    case "/":
+                        var raw = parseFloat(operandA) / parseFloat(operandB);
+                        raw = raw.toFixed(3);
+                        temp_entry = raw;
+                        return temp_entry;
+                        break;
+                    case "%":
+                        temp_entry = parseFloat(operandA) % parseFloat(operandB);
+                        return temp_entry;
+                        break;
+                }
+            });
+
         }
 
         if (input_value === "+-") {
