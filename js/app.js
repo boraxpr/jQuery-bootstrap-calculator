@@ -69,8 +69,9 @@ $(function () {
             else {
                 operandA = cont_value;
             }
-
-            history = operandA + " " + operation + " " + operandB;
+            let showA = parseFloat(operandA).toFixed(2);
+            let showB = parseFloat(operandB).toFixed(2);
+            history = showA + " " + operation + " " + showB;
             $(".history-screen").val(history);
             $(".input-screen").val(function () {
                 switch (operation) {
