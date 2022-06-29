@@ -62,51 +62,63 @@ $(function () {
 
         //Calculations Module
         if (input_value === "=") {
-            if (operandB === null && continuous === 0) {
-                operandB = temp_entry;
-                continuous = 1;
+            if (operandA === null && operandB === null) {
+                $(".history-screen").val("RESET");
+                $(".input-screen").val("READY");
             }
             else {
-                operandA = cont_value;
-            }
-            let showA = parseFloat(operandA).toFixed(2).toString().replace(".00", "");
-            let showB = parseFloat(operandB).toFixed(2).toString().replace(".00", "");
-            history = showA + " " + operation + " " + showB;
-            $(".history-screen").val(history);
-            $(".input-screen").val(function () {
-                switch (operation) {
-                    case "+":
-                        temp_entry = parseFloat(operandA) + parseFloat(operandB);
-                        cont_value = temp_entry;
-                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
-                        return temp_entry;
-                        break;
-                    case "-":
-                        temp_entry = parseFloat(operandA) - parseFloat(operandB);
-                        cont_value = temp_entry;
-                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
-                        return temp_entry;
-                        break;
-                    case "x":
-                        temp_entry = parseFloat(operandA) * parseFloat(operandB);
-                        cont_value = temp_entry;
-                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
-                        return temp_entry;
-                        break;
-                    case "/":
-                        var temp_entry = parseFloat(operandA) / parseFloat(operandB);
-                        cont_value = temp_entry;
-                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
-                        return temp_entry;
-                        break;
-                    case "%":
-                        temp_entry = parseFloat(operandA) % parseFloat(operandB);
-                        cont_value = temp_entry;
-                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
-                        return temp_entry;
-                        break;
+                if (operandB === null && continuous === 0) {
+                    operandB = temp_entry;
+                    continuous = 1;
                 }
-            });
+                else {
+                    operandA = cont_value;
+                }
+                let showA = parseFloat(operandA).toFixed(2).toString().replace(".00", "");
+                let showB = parseFloat(operandB).toFixed(2).toString().replace(".00", "");
+                if (showB < 0 && operation === "-") {
+                    history = showB + " " + operation + " " + showA;
+                }
+                else {
+                    history = showA + " " + operation + " " + showB;
+                }
+
+                $(".history-screen").val(history);
+                $(".input-screen").val(function () {
+                    switch (operation) {
+                        case "+":
+                            temp_entry = parseFloat(operandA) + parseFloat(operandB);
+                            cont_value = temp_entry;
+                            temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
+                            return temp_entry;
+                            break;
+                        case "-":
+                            temp_entry = parseFloat(operandA) - parseFloat(operandB);
+                            cont_value = temp_entry;
+                            temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
+                            return temp_entry;
+                            break;
+                        case "x":
+                            temp_entry = parseFloat(operandA) * parseFloat(operandB);
+                            cont_value = temp_entry;
+                            temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
+                            return temp_entry;
+                            break;
+                        case "/":
+                            var temp_entry = parseFloat(operandA) / parseFloat(operandB);
+                            cont_value = temp_entry;
+                            temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
+                            return temp_entry;
+                            break;
+                        case "%":
+                            temp_entry = parseFloat(operandA) % parseFloat(operandB);
+                            cont_value = temp_entry;
+                            temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
+                            return temp_entry;
+                            break;
+                    }
+                });
+            }
 
         }
 
