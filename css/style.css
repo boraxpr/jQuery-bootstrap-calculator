@@ -3,6 +3,7 @@
 .input-screen
 { 
     background-color: rgb(195, 247, 247);
+    font-size: 2vw;
 }
 
 .calculator-area 
@@ -15,6 +16,7 @@
 .history-screen
 {
     background-color: #c7c7c7;
+    font-size: 1.6vw;
 }
 
 .logo
