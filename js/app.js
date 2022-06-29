@@ -69,8 +69,8 @@ $(function () {
             else {
                 operandA = cont_value;
             }
-            let showA = parseFloat(operandA).toFixed(2);
-            let showB = parseFloat(operandB).toFixed(2);
+            let showA = parseFloat(operandA).toFixed(2).toString().replace(".00", "");
+            let showB = parseFloat(operandB).toFixed(2).toString().replace(".00", "");
             history = showA + " " + operation + " " + showB;
             $(".history-screen").val(history);
             $(".input-screen").val(function () {
@@ -78,28 +78,31 @@ $(function () {
                     case "+":
                         temp_entry = parseFloat(operandA) + parseFloat(operandB);
                         cont_value = temp_entry;
+                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
                         return temp_entry;
                         break;
                     case "-":
                         temp_entry = parseFloat(operandA) - parseFloat(operandB);
                         cont_value = temp_entry;
+                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
                         return temp_entry;
                         break;
                     case "x":
                         temp_entry = parseFloat(operandA) * parseFloat(operandB);
                         cont_value = temp_entry;
+                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
                         return temp_entry;
                         break;
                     case "/":
-                        var raw = parseFloat(operandA) / parseFloat(operandB);
-                        cont_value = raw;
-                        raw = raw.toFixed(3);
-                        temp_entry = raw;
+                        var temp_entry = parseFloat(operandA) / parseFloat(operandB);
+                        cont_value = temp_entry;
+                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
                         return temp_entry;
                         break;
                     case "%":
                         temp_entry = parseFloat(operandA) % parseFloat(operandB);
                         cont_value = temp_entry;
+                        temp_entry = parseFloat(temp_entry).toFixed(2).toString().replace(".00", "");
                         return temp_entry;
                         break;
                 }

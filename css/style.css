@@ -34,7 +34,7 @@
 
 .reset 
 {
-    font-size: 15px;
+    font-size: 10px;
     font-weight:bolder;
 }
 
@@ -59,3 +59,25 @@
     background-position:0 0;
 }
 
+.btn-outline-secondary:focus {
+    color:#000000;
+}
+
+.btn-outline-danger {
+    background: linear-gradient(to right, #f87171 0%, #f87171 50%, #ff0000 50%, #ff0000 100%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transition: background-position 0.1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    transition: all 1s;
+    color:#000000;
+}
+
+.btn-outline-danger:hover {
+    background-position:0 0;
+}
+
+.btn-outline-danger:focus {
+    color: white;
+}
