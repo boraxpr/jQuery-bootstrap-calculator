@@ -11,7 +11,7 @@ pipeline {
                 echo 'Building..'
                 steps{
                     script {
-                        app = docker.build("calculator")
+                        def app = docker.build("calculator")
                     }
                 }
             }
