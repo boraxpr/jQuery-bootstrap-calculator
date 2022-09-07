@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Cloning..'
             }
+        }
         stage('Build') {
 
                 echo 'Building..'
@@ -29,5 +30,5 @@ pipeline {
                 }
             }
         }
+    }
 }
-    }}
