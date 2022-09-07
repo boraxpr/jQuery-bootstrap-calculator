@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:lts-buster-slim'
-            args '-p 8090:3000'
-            registryUrl 'http://172.19.21.115:9443'
-        }
-    }
+    agent any
 
     stages {
         stage('Clone Repository') {
@@ -33,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                    docker.withRegistry(registryUrl)
+                    docker.withRegistry('http://172.19.21.115:9443')
                     dockerImage.push()
                 }
             }
