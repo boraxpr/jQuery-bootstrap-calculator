@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 script {
-                    docker.build registry
+                    docker.build("container")
                 }
             }
         }
