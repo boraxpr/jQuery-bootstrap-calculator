@@ -7,14 +7,13 @@ pipeline {
                 echo 'Cloning..'
             }
         stage('Build') {
-            steps {
+
                 echo 'Building..'
                 steps{
                     script {
                         def app = docker.build("calculator")
                     }
                 }
-            }
         }
         stage('Test') {
             steps {
