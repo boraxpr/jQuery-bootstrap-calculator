@@ -6,22 +6,25 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build image') {
             steps {
                 echo 'Building..'
                 script {
-                    docker.build("container")
+                    app = docker.build("naipawat/test")
                 }
             }
         }
-        stage('Test') {
+        stage('Test image') {
             steps {
-                echo 'Testing..'
+                echo 'Image build success..'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                docker.withRegistry(registry, 'git') {                   
+                app.push("${env.BUILD_NUMBER}")            
+                app.push("latest")     
             }
         }
     }
