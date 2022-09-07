@@ -5,16 +5,13 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 echo 'Cloning..'
-                script{
-                checkout scm
-                }
             }
         stage('Build') {
             steps {
                 echo 'Building..'
                 steps{
                     script {
-                        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                        app = docker.build("calculator")
                     }
                 }
             }
@@ -28,7 +25,8 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('http://172.19.21.115:9443')
-                    dockerImage.push()
+                    app.push("${env.BUILD_NUMBER}")
+                    app.push("latest")
                 }
             }
         }
