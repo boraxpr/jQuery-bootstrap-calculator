@@ -1,8 +1,8 @@
 pipeline {
-//     environment {
-//     registry = "http://172.19.21.115:9443"
-//     registryCredential = 'naipawat.p'
-//   }
+    environment {
+    registry = "http://172.19.21.115:9443"
+    registryCredential = 'naipawat.p'
+  }
     agent any
 
     stages {
@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 script {
-                  docker.build registry + ":$BUILD_NUMBER"
+                 dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
@@ -22,9 +22,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-//                 docker.withRegistry(registry, 'git') {                   
-//                 app.push("${env.BUILD_NUMBER}")            
-//                 app.push("latest")     
+                docker.withRegistry('', registryCredential) {                   
+                dockerImage.push("${env.BUILD_NUMBER}")            
+                dockerImage.push("latest")     
             }
         }
     }
