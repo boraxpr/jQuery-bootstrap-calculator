@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 script {
-                    app = docker.build("naipawat/test")
+                  docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
