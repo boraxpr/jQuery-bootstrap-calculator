@@ -9,9 +9,9 @@ pipeline {
         stage('Build image') {
             steps {
                 echo 'Building..'
-//                 script {
-//                     app = docker.build("naipawat/test")
-//                 }
+                script {
+                    app = docker.build("naipawat/test")
+                }
             }
         }
         stage('Test image') {
