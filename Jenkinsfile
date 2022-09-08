@@ -9,9 +9,9 @@ pipeline {
         stage('Build image') {
             steps {
                 echo 'Building..'
-                script {
-                  docker.build registry + ":$BUILD_NUMBER"
-                }
+//                 script {
+//                   docker.build registry + ":$BUILD_NUMBER"
+//                 }
             }
         }
         stage('Test image') {
