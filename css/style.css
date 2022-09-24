@@ -9,9 +9,10 @@
 
 .calculator-area 
 {
-    width: 80%;
-    height: 80%;
-    margin: 5%;
+    width: 70%;
+    height: 90%;
+    margin: 6%;
+    padding: 3%;
     background-color: #dfdddd;
 }
 
@@ -29,19 +30,20 @@
 }
 .row 
 {
-    margin: 10px;
+    margin: 1%;
+    padding: 1%;
 }
 
 .btn 
 {
     font-family: 'Common Pixel', sans-serif;
-    margin: 5px;
+    margin: 1%;
     font-size: xx-large;
 }
 
 .reset 
 {
-    font-size: 10px;
+    font-size: 15px;
     font-weight:bolder;
 }
 
@@ -87,4 +89,9 @@
 
 .btn-outline-danger:focus {
     color: white;
+}
+
+.outer {
+    margin: 0;
+    padding: 0;
 }
